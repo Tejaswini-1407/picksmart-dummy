@@ -1,13 +1,22 @@
 # PickSmart – Dummy E-Commerce with Razorpay
 
-## 🛍️ What this project does
+About the Project
 
-PickSmart is a simple e-commerce web application where users can:
+PickSmart is a simple full-stack e-commerce web application that allows users to:
 
-* Browse products
-* Add items to cart
-* Checkout using Razorpay (test mode)
-* View payment success or failure pages
+Browse products
+Add items to cart
+Checkout using Razorpay (test mode)
+View payment success or failure pages
+
+This project demonstrates payment gateway integration, cart management, and full-stack deployment.
+
+✨ Features
+🛒 Add to Cart (localStorage-based)
+💳 Razorpay Payment Integration
+✅ Payment Success Page
+🌐 Fully Deployed on Render
+🎨 Clean and Responsive UI
 
 ---
 
@@ -53,5 +62,6 @@ http://localhost:5001
 * HTML, CSS, JavaScript
 * Node.js & Express
 * Razorpay API
+* Deployment: Render
 
 ---
