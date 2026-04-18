@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h2>🛒 Your Cart</h2>
+  <nav class="nav">
+    <a href="products.html">Products</a>
+  </nav>
+</header>
+
+<div class="cart-box">
+
+  <div id="cartList"></div>
+  <h3 id="total"></h3>
+
+  <button onclick="checkout()">Proceed to Payment 💳</button>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
+
+const container = document.getElementById("cartList");
+
+cart.forEach((item, index) => {
+  const div = document.createElement("div");
+  div.classList.add("cart-item");
+
+  div.innerHTML = `
+    <span>${item.name} - ₹${item.price}</span>
+    <button onclick="removeItem(${index})">❌</button>
+  `;
+
+  container.appendChild(div);
+  total += item.price;
+});
+
+document.getElementById("total").innerText = "Total: ₹" + total;
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
+
+async function checkout() {
+
+  const res = await fetch("/create-order", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ amount: total })
+  });
+
+  const order = await res.json();
+
+  const options = {
+    key: "rzp_test_SewTQ251C1kJJF",
+    amount: order.amount,
+    currency: "INR",
+    order_id: order.id,
+    name: "PickSmart",
+    description: "Order Payment",
+
+    handler: async function (response) {
+
+      const verify = await fetch("/verify-payment", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(response)
+      });
+
+      const data = await verify.json();
+
+      if (data.success) {
+        localStorage.removeItem("cart");
+        window.location.href = "success.html";  // ✅ REDIRECT
+      } else {
+        window.location.href = "failure.html";
+      }
+    }
+  };
+
+  new Razorpay(options).open();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickSmart | Product</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="brand">
+    <img src="images/logo.jpg" alt="PickSmart Logo" class="logo">
+    
+    <div class="brand-text">
+      <h1>PickSmart</h1>
+      <p class="tagline">Smart Picks. Smarter Decisions.</p>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">🛒 Cart</a> <!-- ✅ Added -->
+  </nav>
+</header>
+
+<main class="products-page">
+
+<h1 class="page-title">Browse Products</h1>
+
+<section class="products-grid">
+
+<!-- PRODUCT 1 -->
+<div class="product-card" data-category="phone">
+<img src="images/phone.jpg">
+<h3>Smartphone Pro</h3>
+<p>₹29,999</p>
+<button onclick="addToCart('Smartphone Pro', 29999)">Add to Cart 🛒</button>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="product-card" data-category="laptop">
+<img src="images/laptop.jpg">
+<h3>Ultra Laptop</h3>
+<p>₹79,999</p>
+<button onclick="addToCart('Ultra Laptop', 79999)">Add to Cart 🛒</button>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product-card" data-category="accessory">
+<img src="images/headphones.jpg">
+<h3>Noise Headphones</h3>
+<p>₹4,999</p>
+<button onclick="addToCart('Noise Headphones', 4999)">Add to Cart 🛒</button>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="product-card" data-category="laptop">
+<img src="images/laptop2.jpg">
+<h3>Gaming Laptop</h3>
+<p>₹59,999</p>
+<button onclick="addToCart('Gaming Laptop', 59999)">Add to Cart 🛒</button>
+</div>
+
+<!-- PRODUCT 5 -->
+<div class="product-card" data-category="phone">
+<img src="images/phone1.jpg">
+<h3>Budget Phone</h3>
+<p>₹9,999</p>
+<button onclick="addToCart('Budget Phone', 9999)">Add to Cart 🛒</button>
+</div>
+
+<!-- PRODUCT 6 -->
+<div class="product-card" data-category="accessory">
+<img src="images/headphones2.jpg">
+<h3>Wireless Headphones</h3>
+<p>₹2,999</p>
+<button onclick="addToCart('Wireless Headphones', 2999)">Add to Cart 🛒</button>
+</div>
+
+</section>
+
+</div>
+
+</main>
+
+<footer>
+<p>© 2026 PickSmart | Designed by Tejaswini</p>
+</footer>
+
+<div id="toast"></div>
+<script src="script.js"></script>
+
+</body>
+</html>
